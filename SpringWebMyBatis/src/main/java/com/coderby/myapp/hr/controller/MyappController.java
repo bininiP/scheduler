@@ -231,7 +231,7 @@ private static final Logger logger = LoggerFactory.getLogger(MyappController.cla
 	{
 		int seq = myappService.getSeqFromLec(lec_id);
 		myappService.deleteLec(lec_id,seq);
-		return "redirect:/lecture";
+		return "redirect:/lecture";   
 	}
 
 	@RequestMapping(value="/assign/delete", method=RequestMethod.GET)
