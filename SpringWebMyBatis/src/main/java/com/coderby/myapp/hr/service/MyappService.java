@@ -130,7 +130,7 @@ public class MyappService implements IMyappService {
 	}
 
 	@Override
-	public List<Map<String, Object>> getListMember(int mem_id, int mem_pw) {
+	public List<Map<String, Object>> getListMember(String mem_id, String mem_pw) {
 		return getListMember(mem_id,mem_pw);
 	}
 

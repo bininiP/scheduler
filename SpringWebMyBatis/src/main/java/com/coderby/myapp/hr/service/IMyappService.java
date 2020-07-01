@@ -20,7 +20,7 @@ public interface IMyappService {
 	List<Map<String, Object>> getListAssign(int lec_id,int seq_id);
 	List<Map<String, Object>> getListAssign();
 	List<Map<String, Object>> getListMember(int seq_id);
-	List<Map<String, Object>> getListMember(int mem_id, int mem_pw);
+	List<Map<String, Object>> getListMember(String mem_id, String mem_pw);
 	List<Map<String, Object>> getListMember();
 	
 	AssignVO getAssignInfo(int lec_id);

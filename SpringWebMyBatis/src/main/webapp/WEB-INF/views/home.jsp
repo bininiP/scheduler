@@ -40,6 +40,7 @@
 						정보</a></li>
 				<li class="nav-item"><a class="nav-link" href="./enterprise">지원
 						기업</a></li>
+				<li class="nav-item"><a class="nav-link" href="./mypage">마이페이지</a></li>
 
 
 			</ul>
@@ -74,7 +75,7 @@
 		json.PAPER_END = "${b.PAPER_END}";
 		json.INTERVIEW1 = "${b.INTERVIEW1}";
 		json.INTERVIEW2 = "${b.INTERVIEW2}";
-		json.INTERVIEW3 = "${b.INTERVIEW3}"; 
+		json.INTERVIEW3 = "${b.INTERVIEW3}";  
 		result2.push(json);
 		</c:forEach> 
 	});

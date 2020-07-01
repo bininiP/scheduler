@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.coderby.myapp.hr.model.AssignVO;
 import com.coderby.myapp.hr.model.EntVO;
 import com.coderby.myapp.hr.model.LecVO;
+import com.coderby.myapp.hr.model.MemberVO;
 import com.coderby.myapp.hr.service.IMyappService;
 import com.coderby.myapp.hr.service.MyappService;
 @Controller
@@ -82,7 +83,8 @@ private static final Logger logger = LoggerFactory.getLogger(MyappController.cla
 	@RequestMapping(value="/lecture/{lec_id}")
 	public String getIdLec(@PathVariable int lec_id, Model model)
 	{
-		LecVO lec = myappService.getLecInfo(lec_id);
+		int seq = myappService.getSeqFromLec(lec_id);
+		LecVO lec = myappService.getLecInfo(lec_id, seq);
 		model.addAttribute("lec", lec);
 		return "sch/detail/lec_detail";
 	}
@@ -90,7 +92,8 @@ private static final Logger logger = LoggerFactory.getLogger(MyappController.cla
 	@RequestMapping(value="/enterprise/{ent_id}")
 	public String getIdEnt(@PathVariable int ent_id, Model model)
 	{
-		EntVO ent = myappService.getEntInfo(ent_id);
+		int seq = myappService.getSeqFromEnt(ent_id);
+		EntVO ent = myappService.getEntInfo(ent_id, seq);
 		model.addAttribute("ent",ent);
 		return "sch/detail/ent_detail";
 	}
@@ -100,13 +103,15 @@ private static final Logger logger = LoggerFactory.getLogger(MyappController.cla
 	@RequestMapping(value="/enterprise/update")
 	public String updateEnt( int ent_id, Model model)
 	{
-		model.addAttribute("ent", myappService.getEntInfo(ent_id));
+		int seq = myappService.getSeqFromEnt(ent_id);
+		model.addAttribute("ent", myappService.getEntInfo(ent_id,seq));
 		return "sch/update/update_ent";
 	}
 	
 	@RequestMapping(value="/enterprise/update", method=RequestMethod.POST)
 	public String updateEnt( EntVO ent, Model model)
 	{	
+		
 		myappService.updateEnt(ent);
 		return "redirect:/enterprise";
 	}
@@ -128,7 +133,8 @@ private static final Logger logger = LoggerFactory.getLogger(MyappController.cla
 	@RequestMapping(value="/lecture/update")
 	public String updateLec(int lec_id, Model model)
 	{
-		model.addAttribute("lec", myappService.getLecInfo(lec_id));
+		int seq = myappService.getSeqFromLec(lec_id);
+		model.addAttribute("lec", myappService.getLecInfo(lec_id, seq));
 		return "sch/update/update_lec";
 	}
 	
@@ -170,19 +176,61 @@ private static final Logger logger = LoggerFactory.getLogger(MyappController.cla
 		return "redirect:/lecture";
 	}
 
+	//-------------- mypage ----------------
+
+	@RequestMapping(value="/mypage", method=RequestMethod.GET)
+	public String GetMemberInfo(String mem_id, String mem_pw,Model model)
+	{
+		//model.addAttribute("mem", myappService.getMemberInfo(mem_id, mem_pw));
+		model.addAttribute("mem", myappService.getMemberInfo("hello", "hi"));
+		return "sch/mypage/mypage";
+	}
+	
+	@RequestMapping(value="/mypage/login")
+	public String MypageLogin(MemberVO mem,  Model model)
+	{
+		model.addAttribute("mem", myappService.getMemberInfo("hello", "hi"));
+		return "sch/mypage/mypage_login";
+	}
+	
+	@RequestMapping(value="/mypage/update", method=RequestMethod.GET)
+	public String updateMember(String mem_id, String mem_pw, Model model)
+	{
+		model.addAttribute(myappService.getMemberInfo(mem_id, mem_pw));
+		return "sch/update/update_mem";
+	}
+	
+	@RequestMapping(value="/mypage/update", method=RequestMethod.POST)
+	public String updateMember(MemberVO mem, Model model)
+	{
+		myappService.updateMember(mem);
+		return "sch/update/update_mem";
+	}
+	
+	
+	@RequestMapping(value="/mypage/delete", method=RequestMethod.GET)
+	public String deleteMember(int lec_id, Model model)
+	{
+		int seq = myappService.getSeqFromLec(lec_id);
+		model.addAttribute("mem",myappService.getLecInfo(lec_id,seq) );
+		return "sch/delete/delete_lec";
+	}
+	
 	
 	//----------delete------------
 	@RequestMapping(value="/lecture/delete", method=RequestMethod.GET)
 	public String deleteLecG(int lec_id, Model model)
 	{
-		model.addAttribute("lec",myappService.getLecInfo(lec_id) );
+		int seq = myappService.getSeqFromLec(lec_id);
+		model.addAttribute("lec",myappService.getLecInfo(lec_id,seq) );
 		return "sch/delete/delete_lec";
 	}
 	
 	@RequestMapping(value="/lecture/delete", method=RequestMethod.POST)
 	public String deleteLec(int lec_id, Model model)
 	{
-		myappService.deleteLec(lec_id);
+		int seq = myappService.getSeqFromLec(lec_id);
+		myappService.deleteLec(lec_id,seq);
 		return "redirect:/lecture";
 	}
 
@@ -204,14 +252,16 @@ private static final Logger logger = LoggerFactory.getLogger(MyappController.cla
 	@RequestMapping(value="/enterprise/delete", method=RequestMethod.GET)
 	public String deleteEntG(int ent_id, Model model)
 	{
-		model.addAttribute("ent",myappService.getEntInfo(ent_id));
+		int seq = myappService.getSeqFromEnt(ent_id);
+		model.addAttribute("ent",myappService.getEntInfo(ent_id,seq));
 		return "sch/delete/delete_ent";
 	}
 	
 	@RequestMapping(value="/enterprise/delete", method=RequestMethod.POST)
 	public String deleteEnt(int ent_id, Model model)
 	{
-		myappService.deleteEnt(ent_id);
+		int seq = myappService.getSeqFromEnt(ent_id);
+		myappService.deleteEnt(ent_id,seq);
 		return "redirect:/enterprise";
 	}
 	

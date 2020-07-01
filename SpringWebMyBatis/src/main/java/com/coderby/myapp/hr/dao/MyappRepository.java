@@ -110,15 +110,15 @@ public class MyappRepository implements IMyappRepository {
 	@Override
 	public void updateEnt(EntVO ent) {
 		jdbcTemplate.update(
-				"update enterprise set ent_name=?,paper_end=?, interview1=?, interview2=?, interview3=? where ent_id = ?",
+				"update enterprise set ent_name=?,paper_end=?, interview1=?, interview2=?, interview3=? where ent_id = ? and seq_id =?",
 				ent.getEnt_name(), ent.getPaper_end(), ent.getInterview1(), ent.getInterview2(), ent.getInterview3(),
-				ent.getEnt_id());
+				ent.getEnt_id(),ent.getSeq_id());
 	}
 
 	@Override
 	public void updateLec(LecVO lec) {
-		jdbcTemplate.update("update lecture set lec_name=?,lec_start=?, lec_end=? where lec_id = ?", lec.getLec_name(),
-				lec.getLec_start(), lec.getLec_end(), lec.getLec_id());
+		jdbcTemplate.update("update lecture set lec_name=?,lec_start=?, lec_end=? where lec_id = ? and seq_id=?", lec.getLec_name(),
+				lec.getLec_start(), lec.getLec_end(), lec.getLec_id(),lec.getSeq_id());
 	}
 
 	@Override
@@ -130,15 +130,15 @@ public class MyappRepository implements IMyappRepository {
 
 	@Override
 	public void insertEnt(EntVO ent) {
-		jdbcTemplate.update("insert into enterprise values(ent_id.NEXTVAL,?,?,?,?,?)", ent.getEnt_name(),
-				ent.getPaper_end(), ent.getInterview1(), ent.getInterview2(), ent.getInterview3());
+		jdbcTemplate.update("insert into enterprise values(ent_id.NEXTVAL,?,?,?,?,?,?)", ent.getEnt_name(),
+				ent.getPaper_end(), ent.getInterview1(), ent.getInterview2(), ent.getInterview3(), ent.getSeq_id());
 
 	}
 
 	@Override
 	public void insertLec(LecVO lec) {
-		jdbcTemplate.update("insert into lecture values(lec_id.NEXTVAL,?,?,?)", lec.getLec_name(), lec.getLec_start(),
-				lec.getLec_end());
+		jdbcTemplate.update("insert into lecture values(lec_id.NEXTVAL,?,?,?,?)", lec.getLec_name(), lec.getLec_start(),
+				lec.getLec_end(),lec.getSeq_id());
 	}
 
 	@Override
@@ -277,7 +277,7 @@ public class MyappRepository implements IMyappRepository {
 	}
 
 	@Override
-	public List<Map<String, Object>> getListMember(int mem_id, int mem_pw) {
+	public List<Map<String, Object>> getListMember(String mem_id, String mem_pw) {
 		return jdbcTemplate.queryForList("select * from member where mem_id =? and mem_pw=?",mem_id, mem_pw);
 	}
 
