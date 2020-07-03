@@ -70,11 +70,11 @@
 
 			<tr>
 				<th scope="col">아이디</th>
-				<td><input type="text" id="tmp_id" maxlength="20"></td>
+				<td><input type="text" id="tmp_id" maxlength="20" required></td>
 			</tr>
 			<tr>
 				<th scope="col">패스워드</th>
-				<td><input type="password" id="tmp_pw" maxlength="20"></td>
+				<td><input type="password" id="tmp_pw" maxlength="20" required></td>
 			</tr>
 
 		</table>

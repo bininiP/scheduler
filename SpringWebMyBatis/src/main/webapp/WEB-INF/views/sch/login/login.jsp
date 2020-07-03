@@ -76,7 +76,7 @@
 						<col width="60%" />
 					<tr scope="col">
 						<td id="title">아이디</td>
-						<td><input type="text" name="mem_id" maxlength="20"> <!--  <input type="button" class="btn btn-outline-info btn-sm" value="중복확인" >     -->
+						<td><input type="text" name="mem_id" maxlength="20">   
 						</td>
 					</tr>
 
@@ -85,14 +85,12 @@
 						<td><input type="password" name="mem_pw" maxlength="15">
 						</td>
 					</tr>
-
-
 				</table>
 				<br>
 
 				<input type="submit" class="btn btn-outline-info btn-sm"
 					value="로그인">
-				<a class="btn btn-outline-info btn-sm" href="<c:url value= '/member/register'/> ">회원가입</a>
+				<a class="btn btn-outline-info btn-sm" href="<c:url value= '/member/register'/> " >회원가입</a>
 				<%-- <a class="btn btn-outline-info btn-sm" href="<c:url value= 'register'/> ">회원가입</a> --%>
 				<br> <br>
 			</form>
@@ -102,4 +100,5 @@
 	</div>
 
 </body>
+
 </html>
