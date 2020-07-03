@@ -53,24 +53,24 @@ btt {
 						<table class="table table-hover" style="width: 400px;">
 							<tr scope="col">
 								<td id="title">아이디</td>
-								<td><input type="text" name="mem_id" maxlength="20"></td>
+								<td><input type="text" id ="mem_id" name="mem_id" maxlength="20" required></td>
 							</tr>
 
 							<tr>
 								<td id="title">비밀번호</td>
-								<td><input type="password" name="mem_pw" maxlength="15">
+								<td><input type="password" name="mem_pw" maxlength="15" required>
 								</td>
 							</tr>
 
 							<tr>
 								<td id="title">비밀번호 확인</td>
-								<td><input type="password" name="password" maxlength="15">
+								<td><input type="password" name="password" maxlength="15" required>
 								</td>
 							</tr>
 
 							<tr>
 								<td id="title">이름</td>
-								<td><input type="text" name="mem_name" maxlength="40"></td>
+								<td><input type="text" name="mem_name" maxlength="40" required></td>
 							</tr>
 
 						</table>

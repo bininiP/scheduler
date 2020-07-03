@@ -50,10 +50,10 @@ private static final Logger logger = LoggerFactory.getLogger(MyappController.cla
 		List<Map<String,Object>> lec = myappService.getListLec(mem.getSeq_id());
 		List<Map<String, Object>> ent = myappService.getListEnt(mem.getSeq_id());
 		List<Map<String, Object>> assign = myappService.getListAssign(mem.getSeq_id());
-		System.out.println(assign);
+		//System.out.println(assign);
 		model.addAttribute("ent", ent);
 		model.addAttribute("assign", assign);
-		System.out.println(mem.getMem_id());
+		//System.out.println(mem.getMem_id());
 		return "home";
 	}
 	
@@ -145,9 +145,10 @@ private static final Logger logger = LoggerFactory.getLogger(MyappController.cla
 	}
 	
 	@RequestMapping(value="/lecture/update", method=RequestMethod.POST)
-	public String updateLec(LecVO lec, Model model)
+	public String updateLec(HttpSession session,LecVO lec, Model model)
 	{
-		
+		MemberVO mem = (MemberVO) session.getAttribute("member");
+		lec.setSeq_id(mem.getSeq_id());
 		myappService.updateLec(lec);
 		return "redirect:/lecture";
 	}
@@ -181,7 +182,7 @@ private static final Logger logger = LoggerFactory.getLogger(MyappController.cla
 	public String inserAssign(HttpSession session, AssignVO as, Model model)
 	{
 		MemberVO mem = (MemberVO) session.getAttribute("member");
-		as.setLec_id(mem.getSeq_id());
+		as.setSeq_id(mem.getSeq_id());
 		myappService.insertAssign(as);
 		return "redirect:/lecture";
 	}
@@ -193,7 +194,7 @@ private static final Logger logger = LoggerFactory.getLogger(MyappController.cla
 	{
 		MemberVO mem = (MemberVO) session.getAttribute("member");
 		model.addAttribute("mem",mem);
-		System.out.println("mypage:"+mem.getMem_name()+mem.getSeq_id());
+		//System.out.println("mypage:"+mem.getMem_name()+mem.getSeq_id());
 		//model.addAttribute("mem", myappService.getMemberInfo("hello", "hi"));
 		return "sch/mypage/mypage";
 	}
@@ -220,7 +221,7 @@ private static final Logger logger = LoggerFactory.getLogger(MyappController.cla
 	{
 		HttpSession session = req.getSession(true);
 		MemberVO mem = (MemberVO) session.getAttribute("member");
-		System.out.println("update  "+mem.getMem_name());
+		//System.out.println("update  "+mem.getMem_name());
 		model.addAttribute("mem", mem);
 		return "sch/update/update_mem";
 	}
@@ -309,14 +310,12 @@ private static final Logger logger = LoggerFactory.getLogger(MyappController.cla
 	
 	//----------Login------------
 	
-//	@RequestMapping(value="/member/login")
 	@RequestMapping(value="/")
 	public String login(Model model)throws Exception{
 	
 		return "sch/login/login";
 	}
 	
-//	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public String login(MemberVO member, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 		logger.info("post login");
@@ -326,7 +325,7 @@ private static final Logger logger = LoggerFactory.getLogger(MyappController.cla
 		String mem_pw = member.getMem_pw();
 
 		List<Map<String, Object>> list = myappService.getListMember();
-		System.out.println(list);
+		//System.out.println(list);
 		MemberVO login = null;
 		
 		for (Map<String, Object> map : list) {
@@ -338,7 +337,6 @@ private static final Logger logger = LoggerFactory.getLogger(MyappController.cla
 		if(login == null) {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
-//			return "redirect:/member/login";
 			return "redirect:/";
 		}else {
 			session.setAttribute("member", login);
