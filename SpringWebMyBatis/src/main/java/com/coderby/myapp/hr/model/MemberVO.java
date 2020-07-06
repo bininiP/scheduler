@@ -5,6 +5,7 @@ public class MemberVO {
 	private String mem_id=null;
 	private String mem_pw=null;
 	private String mem_name=null;
+	
 	public int getSeq_id() {
 		return seq_id;
 	}
