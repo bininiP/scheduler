@@ -62,7 +62,7 @@
 					</a></li>
 					<li class="nav-item"><a class="nav-link" href="../lecture">수강
 							정보</a></li>
-					<li class="nav-item active"><a class="nav-link" href="../enterprise">지원
+					<li class="nav-item"><a class="nav-link" href="../enterprise">지원
 							기업</a></li>
 
 
