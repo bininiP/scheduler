@@ -77,6 +77,7 @@ public class EntVO {
 				+"\n서류마감일: " + paper_end +
 				"\n 1차면접일: "+interview1 +
 				"\n 2차면접일: "+interview2 +
-				"\n 3차면접일: "+interview3;
+				"\n 3차면접일: "+interview3+
+				"\n seq_id: "+seq_id;
 	}
 }

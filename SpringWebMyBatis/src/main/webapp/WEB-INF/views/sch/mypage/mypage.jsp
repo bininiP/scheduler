@@ -11,6 +11,31 @@
 	    margin-left: 50%;
 	    color: #81898E;
 	}
+	.dropdown {
+	  position: relative;
+	  display: inline-block;
+	}
+	.dropdown-content {
+	  display: none;
+	  position: absolute;
+	  background-color: #ECEDED;
+	  min-width: 160px;
+	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 1;
+	}
+	/* Links inside the dropdown */
+	.dropdown-content a {
+	  color: black;
+	  padding: 12px 16px;
+	  text-decoration: none;
+	  display: block;
+	}
+	/* Change color of dropdown links on hover */
+	.dropdown-content a:hover {background-color: #BEDBF9;}
+	
+	/* Show the dropdown menu on hover */
+	.dropdown:hover .dropdown-content {display: block;}
+	
 </style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
 integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -42,6 +67,13 @@ integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7
 
 
 				</ul>
+				<div class = "dropdown">
+						<img src="images/계정아이콘.png" height="40" width="40">
+						<div class="dropdown-content">
+							<a  href="./mypage">마이페이지</a>
+							<a  href="./member/logout">로그아웃</a>
+						</div>
+					</div>
 				<!-- <form class="form-inline my-2 my-lg-0">
 			      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 			      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -83,11 +115,8 @@ integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7
 					<input type="hidden" name="seq_id" value=${mem.seq_id}> -->
 						<br>  <input type ="submit" class="btn btn-outline-info btn-sm" value ="회원 정보 수정">
 					</form>
-						<a class="btn btn-outline-info btn-sm" 
-						href="../home">뒤로</a>
-				
-			
-	
+						
+
 	</div>
 </body>
 </html>

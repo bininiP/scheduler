@@ -37,6 +37,7 @@
 				<prop key="java.lang.RuntimeException">
 					error/runtime
 				</prop>
+				
 			</props>
 		</property>
 		<property name="defaultErrorView" value="error/default" />

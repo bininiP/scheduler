@@ -17,6 +17,33 @@
 	rel="stylesheet">
 <!--     <link rel="stylesheet" href="css/demo.css"/> -->
 <link rel="stylesheet" href="css/theme3.css">
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ECEDED;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #BEDBF9;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+</style>
 
 </head>
 <body>
@@ -43,13 +70,16 @@
 								정보</a></li>
 						<li class="nav-item"><a class="nav-link" href="./enterprise">지원
 								기업</a></li>
-						<li class="nav-item"><a class="nav-link" href="./mypage">마이페이지
-								</a></li>
-						<li class="nav-item"><a class="nav-link" href="./member/logout">로그아웃
-								</a></li>
-
 
 					</ul>
+				
+					<div class = "dropdown">
+						<img src="images/계정아이콘.png" height="40" width="40">
+						<div class="dropdown-content">
+							<a  href="./mypage">마이페이지</a>
+							<a  href="./member/logout">로그아웃</a>
+						</div>
+					</div>
 					<!-- <form class="form-inline my-2 my-lg-0">
 			      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 			      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -65,10 +95,11 @@
 
 <style>
 .lecture >a {
-	color: blue!important;
+	color: #ed8e83!important;
 }
 .enterprise >a {
-	color: red!important;
+	color: #1b4793!important;
+
 }
 </style>
 <script>

@@ -2,8 +2,9 @@
   width: 100%;
   height:10%;
 }
+
 .cld-main a{
-	font-size: 13.5px;
+	font-size: 15.5px;
 	width: 100%;
   	position: relative;
 	height:80%;
@@ -68,7 +69,8 @@
     cursor: pointer;
   }
   .cld-day.today{
-    border: 2px solid #FFBEE2;
+    background: #ffe6f2;
+    
   }
   .cld-day.disableDay{
     opacity: 0.5;
@@ -88,7 +90,7 @@
         font-weight: normal;
       }
       .cld-day:hover{
-        background: #eee;
+        background: #f0f0f5;
       }
       .cld-number.eventday{
         font-weight: bold;
@@ -98,3 +100,9 @@
       }
       .today .cld-number.eventday:hover{
       }
+     /*  .lecture >a {
+	color: #000000!important;
+}
+.enterprise >a {
+	color: red!important;
+} */
